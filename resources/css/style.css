@@ -1,0 +1,255 @@
+:root {
+    --primary-black: #181818;
+    --secondary-black: #1a1a1a;
+    --third-black:rgb(29, 29, 29);
+    --accent-yellow: #fbbf24;
+    --text-yellow: #fcd34d;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f0f0f;
+    color: #e5e5e5;
+}
+
+.sidebar {
+    background-color: var(--primary-black);
+    transition: all 0.3s;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 40;
+}
+
+.sidebar-collapsed {
+    width: 80px;
+}
+
+.sidebar-link {
+    transition: all 0.2s;
+}
+
+.sidebar-link:hover {
+    background-color: var(--secondary-black);
+    border-left: 4px solid var(--accent-yellow);
+}
+
+.sidebar-link.active {
+    background-color: var(--secondary-black);
+    border-left: 4px solid var(--accent-yellow);
+}
+
+.sidebar-link-text {
+    transition: opacity 0.3s;
+}
+
+.navbar {
+    background-color: var(--primary-black);
+    height: 72px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 250px; /* Matches sidebar width */
+    z-index: 30;
+    transition: all 0.3s;
+}
+
+.navbar-collapsed {
+    left: 80px;
+}
+
+.main-content {
+    margin-left: 250px;
+    margin-top: 64px;
+    transition: all 0.3s;
+    min-height: calc(100vh - 64px);
+}
+
+.main-content-collapsed {
+    margin-left: 80px;
+}
+
+.card {
+    background-color: var(--primary-black);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stats-card {
+    border-left: 4px solid var(--accent-yellow);
+}
+
+.yellow-btn {
+    background-color: var(--accent-yellow);
+    color: var(--primary-black);
+    transition: all 0.3s;
+}
+
+.yellow-btn:hover {
+    background-color: #f59e0b;
+    transform: translateY(-2px);
+}
+
+.yellow-text {
+    color: var(--text-yellow);
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #2a2a2a;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-value {
+    height: 100%;
+    background-color: var(--accent-yellow);
+    border-radius: 4px;
+}
+
+.chart-container {
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 250px;
+    }
+
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    .navbar {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+          /* Webkit browsers (Chrome, Safari, newer versions of Opera) */
+.sidebar::-webkit-scrollbar {
+width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+background: var(--primary-black);
+border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+background: var(--accent-yellow);
+border-radius: 4px;
+transition: all 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+background: #f59e0b; /* Darker yellow on hover */
+}
+
+/* Firefox */
+.sidebar {
+scrollbar-width: thin;
+scrollbar-color: var(--accent-yellow) var(--primary-black);
+}
+
+/* For touch devices - adds some padding to prevent content overlap */
+@media (hover: none) and (pointer: coarse) {
+.sidebar {
+    padding-right: 12px;
+}
+}
+
+/* Hide scrollbar for IE, Edge and Firefox while keeping functionality */
+.sidebar {
+-ms-overflow-style: none; /* IE and Edge */
+scrollbar-width: thin; /* Firefox */
+}
+.submenu {
+display: none;
+transition: all 0.3s ease;
+}
+
+.chevron-icon {
+transition: transform 0.3s ease;
+}
+
+.chevron-icon.rotated {
+transform: rotate(180deg);
+}
+.sidebar {
+background-color: var(--primary-black);
+transition: all 0.3s;
+width: 250px;
+height: 100vh;
+position: fixed;
+left: 0;
+top: 0;
+z-index: 40;
+overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.sidebar-collapsed {
+width: 80px;
+}
+
+/* When sidebar is collapsed, ensure content doesn't overflow */
+.sidebar-collapsed .sidebar-link {
+padding-right: 0;
+white-space: nowrap;
+}
+
+/* Hide text elements properly when collapsed */
+.sidebar-collapsed .sidebar-link-text {
+opacity: 0;
+visibility: hidden;
+white-space: nowrap;
+}
+
+/* Ensure icons stay visible and centered when collapsed */
+.sidebar-collapsed .fas {
+margin: 0 auto;
+}
+
+/* Adjust nested items when collapsed */
+.sidebar-collapsed .ml-4 {
+margin-left: 0;
+padding-left: 0;
+}
+
